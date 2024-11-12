@@ -44,11 +44,24 @@ def delete_joke(joke_id):
     else:
         print("Failed to delete the joke. Make sure the ID is correct.")
 
+def get_all_jokes():
+    response = requests.get(f"{API_URL}s")
+    if response.status_code == 200:
+        jokes = response.json().get("jokes")
+        print("All jokes:")
+        for idx, joke in enumerate(jokes):
+            print(f"{idx}: {joke}")
+    else:
+        print("Failed to retrieve jokes.")
 
 if __name__ == '__main__':
     # Get a random joke
     print("GET /joke:")
     get_random_joke()
+
+    # Get all jokes
+    print("\nGET /jokes:")
+    get_all_jokes()
 
     # Add a new joke
     print("\nPOST /joke:")

@@ -54,6 +54,12 @@ jokes = [
     "What do you call a fake noodle? An impasta."
 ]
 
+# GET: Retrieve all jokes
+@app.route('/jokes', methods=['GET'])
+def get_all_jokes():
+    return jsonify({"jokes": jokes})
+
+
 # GET: Retrieve a random joke
 @app.route('/joke', methods=['GET'])
 def get_joke():
